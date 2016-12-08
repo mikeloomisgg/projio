@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import AppContainer from './containers/container'
+import CellContainer from './containers/CellContainer'
 
 class App extends React.Component {
     render() {
         return (
-          <AppContainer />
+          <CellContainer />
         );
     }
 }
 
 ReactDOM.render(
-    <App/ >,
+    <CellContainer />,
     document.getElementById('content')
 );
