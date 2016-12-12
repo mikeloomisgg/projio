@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import CellContainer from './containers/CellContainer'
+var TableContainer = require('./containers/TableContainer');
 
 class App extends React.Component {
     render() {
         return (
-          <CellContainer />
+          <TableContainer />
         );
     }
 }
 
 ReactDOM.render(
-    <CellContainer />,
+    <App />,
     document.getElementById('content')
 );
