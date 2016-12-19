@@ -35,3 +35,17 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# Semantic extraneous shit
+node_modules
+semantic/dist/*
+semantic/gulpfile.js
+semantic/src/definitions
+semantic/src/semantic.less
+semantic/src/theme.less
+semantic/src/themes
+semantic/tasks
+!semantic/dist/semantic.min.css
+!semantic/dist/semantic.min.js
+
+public/js/bundle.js
