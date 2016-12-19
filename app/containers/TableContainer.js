@@ -14,7 +14,7 @@ var TableContainer = React.createClass({
         store={TableStore}
         actions={TableActions}
       >
-        <Table/>
+        <Table />
       </AltContainer>
 
     )

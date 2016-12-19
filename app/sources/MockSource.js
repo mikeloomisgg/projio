@@ -1,4 +1,4 @@
-var mockData = [
+var rowData = [
   { id: 0, name: 'Abu Dhabi' },
   { id: 1, name: 'Berlin' },
   { id: 2, name: 'Bogota' },
