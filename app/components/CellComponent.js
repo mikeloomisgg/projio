@@ -17,7 +17,8 @@ var Cell = React.createClass({
             <input type="text"
               ref={(input) => { this.textInput = input; }}
               defaultValue={this.props.cellData.value}
-              onFocus={()=>{this.textInput.select()}}/>
+              onFocus={()=>{this.textInput.select()}}
+              onChange={this.handleEdit}/>
           </div>
         </td>
       );
@@ -36,7 +37,10 @@ var Cell = React.createClass({
 
   handleDoubleClick() {
     this.props.editCell({rowIndex: this.props.rowIndex, cellIndex: this.props.cellIndex});
+  },
 
+  handleEdit() {
+    this.props.updateCell({rowIndex: this.props.rowIndex, cellIndex: this.props.cellIndex, value: this.textInput.value});
   },
 
   componentDidUpdate() {
