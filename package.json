@@ -29,6 +29,8 @@
     "browserify": "^13.1.1",
     "electron": "^1.4.1",
     "electron-reload": "^1.0.3",
+    "electron-prebuilt": "^1.4.9",
+    "electron-rebuild": "^1.4.0",
     "semantic-ui": "^2.2.6",
     "watchify": "^3.7.0"
   },
@@ -38,12 +40,11 @@
     "axios": "^0.15.2",
     "chokidar": "^1.6.1",
     "classnames": "^2.2.5",
-    "electron-prebuilt": "^1.4.9",
-    "jquery": "^3.1.1",
     "react": "^15.4.1",
     "react-autocomplete": "^1.4.0",
     "react-dom": "^15.4.1",
     "react-sound": "^0.5.2",
-    "semantic-ui-react": "^0.61.4"
+    "semantic-ui-react": "^0.61.4",
+    "sqlite3": "^3.1.8"
   }
 }

@@ -6,20 +6,23 @@ class TableStore {
     this.errorMessage = null;
 
     this.tableData = {
+      headers: [
+        'Name', 'Price'
+      ],
       rows: [
-        { index: 0, cells: [{value: 'Abu Dhabi', isBeingEditted: false, isSelected: false},{value: 'Fucktown', isBeingEditted: false, isSelected: false}] },
-        { index: 1, cells: [{value: 'Berlin', isBeingEditted: false, isSelected: false},{value: 'Fucktown', isBeingEditted: false, isSelected: false}] },
-        { index: 2, cells: [{value: 'Bogota', isBeingEditted: false, isSelected: false},{value: 'Fucktown', isBeingEditted: false, isSelected: false}] },
-        { index: 3, cells: [{value: 'Buenos Aires', isBeingEditted: false, isSelected: false},{value: 'Fucktown', isBeingEditted: false, isSelected: false}] },
-        { index: 4, cells: [{value: 'Cairo', isBeingEditted: false, isSelected: false},{value: 'Fucktown', isBeingEditted: false, isSelected: false}] },
-        { index: 5, cells: [{value: 'Chicago', isBeingEditted: false, isSelected: false},{value: 'Fucktown', isBeingEditted: false, isSelected: false}] },
-        { index: 6, cells: [{value: 'Lima', isBeingEditted: false, isSelected: false},{value: 'Fucktown', isBeingEditted: false, isSelected: false}] },
-        { index: 7, cells: [{value: 'London', isBeingEditted: false, isSelected: false},{value: 'Fucktown', isBeingEditted: false, isSelected: false}] },
-        { index: 8, cells: [{value: 'Miami', isBeingEditted: false, isSelected: false},{value: 'Fucktown', isBeingEditted: false, isSelected: false}] },
-        { index: 9, cells: [{value: 'Moscow', isBeingEditted: false, isSelected: false},{value: 'Fucktown', isBeingEditted: false, isSelected: false}] },
-        { index: 10, cells: [{value: 'Mumbai', isBeingEditted: false, isSelected: false},{value: 'Fucktown', isBeingEditted: false, isSelected: false}] },
-        { index: 11, cells: [{value: 'Paris', isBeingEditted: false, isSelected: false},{value: 'Fucktown', isBeingEditted: false, isSelected: false}] },
-        { index: 12, cells: [{value: 'San Francisco', isBeingEditted: false, isSelected: false},{value: 'Fucktown', isBeingEditted: false, isSelected: false}] }
+        { index: 0, cells: [{column: 'Name', value: 'Abu Dhabi', isBeingEditted: false, isSelected: false},{column: 'Cost', value: 'Fucktown', isBeingEditted: false, isSelected: false}] },
+        { index: 1, cells: [{column: 'Name', value: 'Berlin', isBeingEditted: false, isSelected: false},{column: 'Cost', value: 'Fucktown', isBeingEditted: false, isSelected: false}] },
+        { index: 2, cells: [{column: 'Name', value: 'Bogota', isBeingEditted: false, isSelected: false},{column: 'Cost', value: 'Fucktown', isBeingEditted: false, isSelected: false}] },
+        { index: 3, cells: [{column: 'Name', value: 'Buenos Aires', isBeingEditted: false, isSelected: false},{column: 'Cost', value: 'Fucktown', isBeingEditted: false, isSelected: false}] },
+        { index: 4, cells: [{column: 'Name', value: 'Cairo', isBeingEditted: false, isSelected: false},{column: 'Cost', value: 'Fucktown', isBeingEditted: false, isSelected: false}] },
+        { index: 5, cells: [{column: 'Name', value: 'Chicago', isBeingEditted: false, isSelected: false},{column: 'Cost', value: 'Fucktown', isBeingEditted: false, isSelected: false}] },
+        { index: 6, cells: [{column: 'Name', value: 'Lima', isBeingEditted: false, isSelected: false},{column: 'Cost', value: 'Fucktown', isBeingEditted: false, isSelected: false}] },
+        { index: 7, cells: [{column: 'Name', value: 'London', isBeingEditted: false, isSelected: false},{column: 'Cost', value: 'Fucktown', isBeingEditted: false, isSelected: false}] },
+        { index: 8, cells: [{column: 'Name', value: 'Miami', isBeingEditted: false, isSelected: false},{column: 'Cost', value: 'Fucktown', isBeingEditted: false, isSelected: false}] },
+        { index: 9, cells: [{column: 'Name', value: 'Moscow', isBeingEditted: false, isSelected: false},{column: 'Cost', value: 'Fucktown', isBeingEditted: false, isSelected: false}] },
+        { index: 10, cells: [{column: 'Name', value: 'Mumbai', isBeingEditted: false, isSelected: false},{column: 'Cost', value: 'Fucktown', isBeingEditted: false, isSelected: false}] },
+        { index: 11, cells: [{column: 'Name', value: 'Paris', isBeingEditted: false, isSelected: false},{column: 'Cost', value: 'Fucktown', isBeingEditted: false, isSelected: false}] },
+        { index: 12, cells: [{column: 'Name', value: 'San Francisco', isBeingEditted: false, isSelected: false},{column: 'Cost', value: 'Fucktown', isBeingEditted: false, isSelected: false}] }
       ]
     };
 

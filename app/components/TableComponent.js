@@ -14,9 +14,16 @@ var Table = React.createClass({
         key={i} />
     }, this);
 
+    var Headers = this.props.tableData.headers.map(function(object, i) {
+      return <th key={i}>{object}</th>
+    });
+
     return (
-      <table className="ui striped selectable celled table" >
+      <table className="ui striped fixed single line selectable celled table" >
         <thead>
+        <tr>
+          {Headers}
+        </tr>
         </thead>
         <tbody>
           {Rows}
