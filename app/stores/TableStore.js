@@ -3,10 +3,7 @@ var TableActions = require('../actions/TableActions');
 
 class TableStore {
   constructor() {
-    this.value = "test";
     this.errorMessage = null;
-    this.isBeingEditted = false;
-    this.isSelected = false;
 
     this.tableData = {
       rows: [
@@ -29,7 +26,8 @@ class TableStore {
     this.bindActions(TableActions);
   }
 
-  onUpdateCell(indexes, value) {
+  onUpdateCell(indexes) {
+    this.tableData.rows[indexes.rowIndex].cells[indexes.cellIndex].value = indexes.value;
   }
 
   onEditCell(indexes) {
@@ -42,11 +40,12 @@ class TableStore {
   }
 
   onSelectCell(indexes) {
-    this.tableData.rows.forEach(function(row) {
-      row.cells.forEach(function(cell) {
-        cell.isSelected = false;
-      });
-    });
+    for(var rowIndex = 0, rowsLen = this.tableData.rows.length; rowIndex < rowsLen; rowIndex++){
+      for(var cellIndex = 0, cellsLen = this.tableData.rows[rowIndex].cells.length; cellIndex < cellsLen; cellIndex++){
+        this.tableData.rows[rowIndex].cells[cellIndex].isSelected = false;
+        this.tableData.rows[rowIndex].cells[cellIndex].isBeingEditted = false;
+      }
+    }
     this.tableData.rows[indexes.rowIndex].cells[indexes.cellIndex].isSelected = true;
   }
 }

@@ -10,6 +10,7 @@ var Table = React.createClass({
         rowData={object}
         selectCell={this.props.selectCell}
         editCell={this.props.editCell}
+        updateCell={this.props.updateCell}
         key={i} />
     }, this);
 

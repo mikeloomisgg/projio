@@ -10,6 +10,7 @@ var Row = React.createClass({
         cellIndex={i}
         selectCell={this.props.selectCell}
         editCell={this.props.editCell}
+        updateCell={this.props.updateCell}
         key={i}/>
     }, this);
 
