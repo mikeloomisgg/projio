@@ -1,9 +1,8 @@
 import React from 'react';
-var Row = require('./RowComponent');
-var Cell = require('./CellComponent');
+import Row from './RowComponent';
+import Cell from './CellComponent';
 
 var Table = React.createClass({
-
   render() {
     var Rows = this.props.tableData.rows.map(function(object, i) {
       return <Row
@@ -33,4 +32,4 @@ var Table = React.createClass({
   }
 });
 
-module.exports = Table;
+export default Table;

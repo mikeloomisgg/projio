@@ -1,6 +1,3 @@
-require('electron-reload')(__dirname, {
-  electron: require('electron-prebuilt')
-});
 const electron = require('electron')
 // Module to control application life.
 const app = electron.app
@@ -9,7 +6,6 @@ const BrowserWindow = electron.BrowserWindow
 
 const path = require('path')
 const url = require('url')
-
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -21,7 +17,7 @@ function createWindow () {
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
+    pathname: path.join(__dirname, './app.html'),
     protocol: 'file:',
     slashes: true
   }))

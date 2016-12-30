@@ -1,5 +1,5 @@
 import React from 'react';
-var Cell = require('./CellComponent')
+import Cell from './CellComponent';
 
 var Row = React.createClass({
   render() {
@@ -22,4 +22,4 @@ var Row = React.createClass({
   }
 });
 
-module.exports = Row;
+export default Row;

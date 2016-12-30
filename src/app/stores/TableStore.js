@@ -1,5 +1,5 @@
-var alt = require('../alt');
-var TableActions = require('../actions/TableActions');
+import alt from '../alt';
+import TableActions from '../actions/TableActions';
 
 class TableStore {
   constructor() {
@@ -50,7 +50,9 @@ class TableStore {
       }
     }
     this.tableData.rows[indexes.rowIndex].cells[indexes.cellIndex].isSelected = true;
+
+    // db.fetch();
   }
 }
 
-module.exports = alt.createStore(TableStore, 'TableStore');
+export default alt.createStore(TableStore, 'TableStore');
