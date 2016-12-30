@@ -48,4 +48,8 @@ semantic/tasks
 !semantic/dist/semantic.min.css
 !semantic/dist/semantic.min.js
 
-public/js/bundle.js
+# Generated build files
+/app/app.js
+/app/background.js
+/app/env.json
+/app/**/*.map

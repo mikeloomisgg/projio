@@ -1,9 +1,8 @@
 import React from 'react';
-var Row = require('./RowComponent');
-var Cell = require('./CellComponent');
+import Row from './RowComponent';
+import Cell from './CellComponent';
 
 var Table = React.createClass({
-
   render() {
     var Rows = this.props.tableData.rows.map(function(object, i) {
       return <Row
@@ -14,9 +13,16 @@ var Table = React.createClass({
         key={i} />
     }, this);
 
+    var Headers = this.props.tableData.headers.map(function(object, i) {
+      return <th key={i}>{object}</th>
+    });
+
     return (
-      <table className="ui striped selectable celled table" >
+      <table className="ui striped fixed single line selectable celled table" >
         <thead>
+        <tr>
+          {Headers}
+        </tr>
         </thead>
         <tbody>
           {Rows}
@@ -26,4 +32,4 @@ var Table = React.createClass({
   }
 });
 
-module.exports = Table;
+export default Table;

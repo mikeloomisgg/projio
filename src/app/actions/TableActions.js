@@ -1,4 +1,4 @@
-var alt = require('../alt');
+import alt from '../alt';
 
 class TableActions {
   constructor() {
@@ -10,4 +10,4 @@ class TableActions {
   }
 }
 
-module.exports = alt.createActions(TableActions);
+export default alt.createActions(TableActions);
