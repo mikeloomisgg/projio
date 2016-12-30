@@ -13,8 +13,8 @@ var Table = React.createClass({
         key={i} />
     }, this);
 
-    var Headers = this.props.tableData.headers.map(function(object, i) {
-      return <th key={i}>{object}</th>
+    var Headers = this.props.tableData.fields.map(function(object, i) {
+      return <th key={i}>{object.name}</th>
     });
 
     return (

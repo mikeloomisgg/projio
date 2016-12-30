@@ -4,11 +4,11 @@ import ReactDOM from 'react-dom';
 import TableContainer from './app/containers/TableContainer';
 
 class App extends React.Component {
-    render() {
-        return (
-          <TableContainer />
-        );
-    }
+  render() {
+    return (
+      <TableContainer />
+    );
+  }
 }
 
 ReactDOM.render(
