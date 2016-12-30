@@ -21,4 +21,4 @@ class Database {
   }
 };
 
-exports.Database = new Database;
+export default new Database;
