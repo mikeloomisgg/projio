@@ -100,7 +100,7 @@ var AppMenu = React.createClass({
       null,
       React.createElement(
         'div',
-        { className: 'ui sticky fixed fluid inverted menu', style: { height: '50px' } },
+        { className: 'ui fixed top sticky fluid inverted menu', style: { height: '50px' } },
         React.createElement(
           'div',
           { className: 'ui simple dropdown item' },
@@ -174,7 +174,7 @@ var TableStore = function () {
 
     var default_task_table = {
       fields: default_fields,
-      rows: [{ index: 0, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 1, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 2, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 3, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 4, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 5, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 6, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 7, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 8, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 9, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 10, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 11, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 12, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 13, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 14, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 15, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 16, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 17, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 18, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 19, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 20, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 21, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 22, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 23, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 24, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 25, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 26, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 27, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 28, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 29, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 30, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 31, cells: JSON.parse(JSON.stringify(default_row.cells)) }]
+      rows: [{ index: 0, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 1, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 2, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 3, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 4, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 5, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 6, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 7, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 8, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 9, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 10, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 11, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 12, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 13, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 14, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 15, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 16, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 17, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 18, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 19, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 20, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 21, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 22, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 23, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 24, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 25, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 26, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 27, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 28, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 29, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 30, cells: JSON.parse(JSON.stringify(default_row.cells)) }]
     };
 
     this.tableData = default_task_table;
@@ -229,11 +229,11 @@ var Cell = React.createClass({
     if (this.props.cellData.isBeingEditted) {
       return React.createElement(
         "td",
-        { className: className },
+        { style: { padding: '0' }, className: className },
         React.createElement(
           "div",
           { className: "ui fluid input focus" },
-          React.createElement("input", { type: "text",
+          React.createElement("input", { style: { padding: '0' }, type: "text",
             ref: function ref(input) {
               _this.textInput = input;
             },
@@ -244,10 +244,16 @@ var Cell = React.createClass({
             onChange: this.handleEdit })
         )
       );
+    } else if (this.props.cellData.value == "") {
+      return React.createElement(
+        "td",
+        { style: { padding: '11px' }, className: className, onClick: this.handleClick, onDoubleClick: this.handleDoubleClick },
+        this.props.cellData.value
+      );
     } else {
       return React.createElement(
         "td",
-        { className: className, onClick: this.handleClick, onDoubleClick: this.handleDoubleClick },
+        { style: { padding: '0px' }, className: className, onClick: this.handleClick, onDoubleClick: this.handleDoubleClick },
         this.props.cellData.value
       );
     }
@@ -312,23 +318,27 @@ var Table = React.createClass({
 
     return React.createElement(
       'div',
-      { className: 'ui fluid container' },
+      { style: { height: '500px' } },
       React.createElement(
-        'table',
-        { className: 'ui striped fixed single line selectable celled table' },
+        'div',
+        { style: { overflow: 'scroll' } },
         React.createElement(
-          'thead',
-          null,
+          'table',
+          { className: 'ui striped fixed selectable celled table' },
           React.createElement(
-            'tr',
+            'thead',
             null,
-            Headers
+            React.createElement(
+              'tr',
+              null,
+              Headers
+            )
+          ),
+          React.createElement(
+            'tbody',
+            null,
+            Rows
           )
-        ),
-        React.createElement(
-          'tbody',
-          null,
-          Rows
         )
       )
     );

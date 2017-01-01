@@ -59,8 +59,7 @@ class TableStore {
         {index: 27, cells: JSON.parse(JSON.stringify(default_row.cells))},
         {index: 28, cells: JSON.parse(JSON.stringify(default_row.cells))},
         {index: 29, cells: JSON.parse(JSON.stringify(default_row.cells))},
-        {index: 30, cells: JSON.parse(JSON.stringify(default_row.cells))},
-        {index: 31, cells: JSON.parse(JSON.stringify(default_row.cells))}
+        {index: 30, cells: JSON.parse(JSON.stringify(default_row.cells))}
       ]
     };
 

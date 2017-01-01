@@ -18,17 +18,19 @@ var Table = React.createClass({
     });
 
     return (
-      <div className="ui fluid container">
-        <table className="ui striped fixed single line selectable celled table">
-          <thead>
-            <tr>
-              {Headers}
-            </tr>
-          </thead>
-          <tbody>
-            {Rows}
-          </tbody>
-        </table>
+      <div style={{height: '500px'}}>
+        <div style={{overflow: 'scroll'}}>
+          <table className="ui striped fixed selectable celled table">
+            <thead>
+              <tr>
+                {Headers}
+              </tr>
+            </thead>
+            <tbody>
+              {Rows}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }

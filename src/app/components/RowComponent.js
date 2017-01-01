@@ -15,7 +15,7 @@ var Row = React.createClass({
     }, this);
 
     return (
-      <tr >
+      <tr>
         {Cells}
       </tr>
     );

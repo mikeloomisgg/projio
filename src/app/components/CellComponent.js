@@ -12,9 +12,9 @@ var Cell = React.createClass({
 
     if(this.props.cellData.isBeingEditted) {
       return (
-        <td className={className}>
+        <td style={{padding: '0'}} className={className}>
           <div className="ui fluid input focus" >
-            <input type="text"
+            <input style={{padding: '0'}} type="text"
               ref={(input) => { this.textInput = input; }}
               defaultValue={this.props.cellData.value}
               onFocus={()=>{this.textInput.select()}}
@@ -22,9 +22,15 @@ var Cell = React.createClass({
           </div>
         </td>
       );
+    } else if(this.props.cellData.value == "") {
+      return (
+        <td style={{padding: '11px'}} className={className} onClick={this.handleClick} onDoubleClick={this.handleDoubleClick}>
+          {this.props.cellData.value}
+        </td>
+      );
     } else {
       return (
-        <td className={className} onClick={this.handleClick} onDoubleClick={this.handleDoubleClick}>
+        <td style={{padding: '0px'}} className={className} onClick={this.handleClick} onDoubleClick={this.handleDoubleClick}>
           {this.props.cellData.value}
         </td>
       );

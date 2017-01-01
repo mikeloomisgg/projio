@@ -4,7 +4,7 @@ var AppMenu = React.createClass({
   render() {
     return (
       <div>
-        <div className="ui sticky fixed fluid inverted menu" style={{height: '50px'}}>
+        <div className="ui fixed top sticky fluid inverted menu" style={{height: '50px'}}>
           <div className="ui simple dropdown item">
             Views <i className="dropdown icon"></i>
             <div className="menu">
