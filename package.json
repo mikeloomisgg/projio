@@ -41,7 +41,7 @@
     "electron": "^1.4.1",
     "electron-builder": "^10.14.0",
     "electron-react-devtools": "^0.4.0",
-    "electron-reload": "^1.0.3",
+    "electron-reload": "^1.1.0",
     "gulp": "^3.9.0",
     "gulp-batch": "^1.0.5",
     "gulp-plumber": "^1.1.0",

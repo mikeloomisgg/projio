@@ -75,6 +75,72 @@ var possibleConstructorReturn = function (self, call) {
   return call && (typeof call === "object" || typeof call === "function") ? call : self;
 };
 
+var AppMenuActions = function AppMenuActions() {
+  classCallCheck(this, AppMenuActions);
+
+  this.generateActions();
+};
+
+var AppMenuActions$1 = alt.createActions(AppMenuActions);
+
+var AppMenuStore = function AppMenuStore() {
+  classCallCheck(this, AppMenuStore);
+
+  this.errorMessage = null;
+  this.bindActions(AppMenuActions$1);
+};
+
+var AppMenuStore$1 = alt.createStore(AppMenuStore, 'AppMenuStore');
+
+var AppMenu = React.createClass({
+  displayName: 'AppMenu',
+  render: function render() {
+    return React.createElement(
+      'div',
+      null,
+      React.createElement(
+        'div',
+        { className: 'ui sticky fixed fluid inverted menu', style: { height: '50px' } },
+        React.createElement(
+          'div',
+          { className: 'ui simple dropdown item' },
+          'Views ',
+          React.createElement('i', { className: 'dropdown icon' }),
+          React.createElement(
+            'div',
+            { className: 'menu' },
+            React.createElement(
+              'a',
+              { className: 'item', href: '#' },
+              'Actions'
+            ),
+            React.createElement(
+              'a',
+              { className: 'item', href: '#' },
+              'Resources'
+            )
+          )
+        )
+      ),
+      React.createElement('div', { className: 'ui container', style: { height: '50px' } })
+    );
+  }
+});
+
+var AppMenuContainer = React.createClass({
+  displayName: 'AppMenuContainer',
+  render: function render() {
+    return React.createElement(
+      AltContainer,
+      {
+        store: AppMenuStore$1,
+        actions: AppMenuActions$1
+      },
+      React.createElement(AppMenu, null)
+    );
+  }
+});
+
 var TableActions = function TableActions() {
   classCallCheck(this, TableActions);
 
@@ -82,41 +148,6 @@ var TableActions = function TableActions() {
 };
 
 var TableActions$1 = alt.createActions(TableActions);
-
-var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('test');
-
-var Database = function () {
-  function Database() {
-    classCallCheck(this, Database);
-  }
-
-  createClass(Database, [{
-    key: 'fetch',
-    value: function fetch() {
-      db.serialize(function () {
-        db.run("CREATE TABLE temp_tasks (name TEXT)");
-
-        var stmt = db.prepare("INSERT INTO temp_tasks VALUES (?)");
-        for (var i = 0; i < 10; i++) {
-          stmt.run("Ipsum " + i);
-        }
-        stmt.finalize();
-
-        db.each("SELECT rowid AS id, name FROM temp_tasks", function (err, row) {
-          console.log(row.id + ": " + row.name);
-        });
-
-        db.close();
-      });
-    }
-  }]);
-  return Database;
-}();
-
-
-
-new Database();
 
 var TableStore = function () {
   function TableStore() {
@@ -135,22 +166,18 @@ var TableStore = function () {
 
     var default_row = {
       index: '0', cells: default_fields.map(function (object, i) {
-        return {
-          column: object.name,
-          value: '',
-          isBeingEditted: false,
-          isSelected: false
-        };
+        var cell = JSON.parse(JSON.stringify(default_cell));
+        cell.column = object.name;
+        return cell;
       }, this)
     };
 
     var default_task_table = {
       fields: default_fields,
-      rows: [{ index: 0, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 1, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 2, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 3, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 4, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 5, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 6, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 7, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 8, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 9, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 10, cells: JSON.parse(JSON.stringify(default_row.cells)) }]
+      rows: [{ index: 0, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 1, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 2, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 3, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 4, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 5, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 6, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 7, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 8, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 9, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 10, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 11, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 12, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 13, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 14, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 15, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 16, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 17, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 18, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 19, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 20, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 21, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 22, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 23, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 24, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 25, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 26, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 27, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 28, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 29, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 30, cells: JSON.parse(JSON.stringify(default_row.cells)) }, { index: 31, cells: JSON.parse(JSON.stringify(default_row.cells)) }]
     };
 
     this.tableData = default_task_table;
-    console.log(this.tableData);
     this.bindActions(TableActions$1);
   }
 
@@ -179,7 +206,6 @@ var TableStore = function () {
         }
       }
       this.tableData.rows[indexes.rowIndex].cells[indexes.cellIndex].isSelected = true;
-      console.log(indexes);
     }
   }]);
   return TableStore;
@@ -285,21 +311,25 @@ var Table = React.createClass({
     });
 
     return React.createElement(
-      'table',
-      { className: 'ui striped fixed single line selectable celled table' },
+      'div',
+      { className: 'ui fluid container' },
       React.createElement(
-        'thead',
-        null,
+        'table',
+        { className: 'ui striped fixed single line selectable celled table' },
         React.createElement(
-          'tr',
+          'thead',
           null,
-          Headers
+          React.createElement(
+            'tr',
+            null,
+            Headers
+          )
+        ),
+        React.createElement(
+          'tbody',
+          null,
+          Rows
         )
-      ),
-      React.createElement(
-        'tbody',
-        null,
-        Rows
       )
     );
   }
@@ -330,7 +360,12 @@ var App = function (_React$Component) {
   createClass(App, [{
     key: 'render',
     value: function render() {
-      return React.createElement(TableContainer, null);
+      return React.createElement(
+        'div',
+        null,
+        React.createElement(AppMenuContainer, null),
+        React.createElement(TableContainer, null)
+      );
     }
   }]);
   return App;

@@ -18,16 +18,18 @@ var Table = React.createClass({
     });
 
     return (
-      <table className="ui striped fixed single line selectable celled table" >
-        <thead>
-        <tr>
-          {Headers}
-        </tr>
-        </thead>
-        <tbody>
-          {Rows}
-        </tbody>
-      </table>
+      <div className="ui fluid container">
+        <table className="ui striped fixed single line selectable celled table">
+          <thead>
+            <tr>
+              {Headers}
+            </tr>
+          </thead>
+          <tbody>
+            {Rows}
+          </tbody>
+        </table>
+      </div>
     );
   }
 });

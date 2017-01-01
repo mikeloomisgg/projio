@@ -1,8 +1,6 @@
 import alt from '../alt';
 import TableActions from '../actions/TableActions';
 
-import Db from '../sources/db';
-
 class TableStore {
   constructor() {
     this.errorMessage = null;
@@ -22,12 +20,9 @@ class TableStore {
 
     var default_row = {
       index: '0', cells: default_fields.map(function(object, i) {
-        return ({
-          column: object.name,
-          value: '',
-          isBeingEditted: false,
-          isSelected: false
-        });
+        var cell = JSON.parse(JSON.stringify(default_cell));
+        cell.column = object.name;
+        return (cell);
       }, this)
     };
 
@@ -44,13 +39,32 @@ class TableStore {
         {index: 7, cells: JSON.parse(JSON.stringify(default_row.cells))},
         {index: 8, cells: JSON.parse(JSON.stringify(default_row.cells))},
         {index: 9, cells: JSON.parse(JSON.stringify(default_row.cells))},
-        {index: 10, cells: JSON.parse(JSON.stringify(default_row.cells))}
+        {index: 10, cells: JSON.parse(JSON.stringify(default_row.cells))},
+        {index: 11, cells: JSON.parse(JSON.stringify(default_row.cells))},
+        {index: 12, cells: JSON.parse(JSON.stringify(default_row.cells))},
+        {index: 13, cells: JSON.parse(JSON.stringify(default_row.cells))},
+        {index: 14, cells: JSON.parse(JSON.stringify(default_row.cells))},
+        {index: 15, cells: JSON.parse(JSON.stringify(default_row.cells))},
+        {index: 16, cells: JSON.parse(JSON.stringify(default_row.cells))},
+        {index: 17, cells: JSON.parse(JSON.stringify(default_row.cells))},
+        {index: 18, cells: JSON.parse(JSON.stringify(default_row.cells))},
+        {index: 19, cells: JSON.parse(JSON.stringify(default_row.cells))},
+        {index: 20, cells: JSON.parse(JSON.stringify(default_row.cells))},
+        {index: 21, cells: JSON.parse(JSON.stringify(default_row.cells))},
+        {index: 22, cells: JSON.parse(JSON.stringify(default_row.cells))},
+        {index: 23, cells: JSON.parse(JSON.stringify(default_row.cells))},
+        {index: 24, cells: JSON.parse(JSON.stringify(default_row.cells))},
+        {index: 25, cells: JSON.parse(JSON.stringify(default_row.cells))},
+        {index: 26, cells: JSON.parse(JSON.stringify(default_row.cells))},
+        {index: 27, cells: JSON.parse(JSON.stringify(default_row.cells))},
+        {index: 28, cells: JSON.parse(JSON.stringify(default_row.cells))},
+        {index: 29, cells: JSON.parse(JSON.stringify(default_row.cells))},
+        {index: 30, cells: JSON.parse(JSON.stringify(default_row.cells))},
+        {index: 31, cells: JSON.parse(JSON.stringify(default_row.cells))}
       ]
     };
 
-
     this.tableData = default_task_table;
-    console.log(this.tableData);
     this.bindActions(TableActions);
   }
 
@@ -75,7 +89,6 @@ class TableStore {
       }
     }
     this.tableData.rows[indexes.rowIndex].cells[indexes.cellIndex].isSelected = true;
-    console.log(indexes);
   }
 }
 
