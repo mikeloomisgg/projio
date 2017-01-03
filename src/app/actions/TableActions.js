@@ -5,7 +5,8 @@ class TableActions {
     this.generateActions(
       'updateCell',
       'editCell',
-      'selectCell'
+      'selectCell',
+      'updateViewHeight'
     )
   }
 }

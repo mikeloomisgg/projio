@@ -1,9 +1,12 @@
 import alt from '../alt';
 import TableActions from '../actions/TableActions';
 
+var win = require('electron').remote;
+
 class TableStore {
   constructor() {
     this.errorMessage = null;
+    this.height = win.getCurrentWindow().getContentSize()[1] - 150;
 
     var default_cell = {
       column: '',
@@ -88,6 +91,10 @@ class TableStore {
       }
     }
     this.tableData.rows[indexes.rowIndex].cells[indexes.cellIndex].isSelected = true;
+  }
+
+  onUpdateViewHeight(size) {
+    this.height = size - 150;
   }
 }
 

@@ -7,7 +7,11 @@ import Row from '../components/RowComponent';
 import Cell from '../components/CellComponent';
 import Table from '../components/TableComponent';
 
-var TableContainer = React.createClass({
+class TableContainer extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <AltContainer
@@ -19,6 +23,6 @@ var TableContainer = React.createClass({
 
     )
   }
-})
+}
 
 export default TableContainer

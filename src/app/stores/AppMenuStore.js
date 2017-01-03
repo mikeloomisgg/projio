@@ -5,6 +5,8 @@ class AppMenuStore {
   constructor() {
     this.errorMessage = null;
     this.bindActions(AppMenuActions);
+
+    this.toolBarHeight = 0;
   }
 }
 

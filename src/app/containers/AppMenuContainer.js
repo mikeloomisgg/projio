@@ -3,20 +3,28 @@ import AltContainer from 'alt-container';
 
 import AppMenuStore from '../stores/AppMenuStore';
 import AppMenuActions from '../actions/AppMenuActions';
-import AppMenu from '../components/AppMenuComponent';
+import AppMenuComponent from '../components/AppMenuComponent';
 
-var AppMenuContainer = React.createClass({
+class AppMenuContainer extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.AppMenuStore = AppMenuStore;
+    AppMenuStore.state.toolBarHeight = this.props.toolBarHeight;
+  }
+
   render() {
+
     return (
       <AltContainer
-        store={AppMenuStore}
+        store={this.AppMenuStore}
         actions={AppMenuActions}
       >
-        <AppMenu />
+        <AppMenuComponent />
       </AltContainer>
 
     )
   }
-})
+}
 
 export default AppMenuContainer

@@ -88,72 +88,174 @@ var AppMenuStore = function AppMenuStore() {
 
   this.errorMessage = null;
   this.bindActions(AppMenuActions$1);
+
+  this.toolBarHeight = 0;
 };
 
 var AppMenuStore$1 = alt.createStore(AppMenuStore, 'AppMenuStore');
 
-var AppMenu = React.createClass({
-  displayName: 'AppMenu',
-  render: function render() {
-    return React.createElement(
-      'div',
-      null,
-      React.createElement(
+var AppMenuComponent = function (_React$Component) {
+  inherits(AppMenuComponent, _React$Component);
+
+  function AppMenuComponent(props) {
+    classCallCheck(this, AppMenuComponent);
+    return possibleConstructorReturn(this, (AppMenuComponent.__proto__ || Object.getPrototypeOf(AppMenuComponent)).call(this, props));
+  }
+
+  createClass(AppMenuComponent, [{
+    key: 'render',
+    value: function render() {
+      return React.createElement(
         'div',
-        { className: 'ui fixed top sticky fluid inverted menu', style: { height: '50px' } },
+        null,
         React.createElement(
           'div',
-          { className: 'ui simple dropdown item' },
-          'Views ',
-          React.createElement('i', { className: 'dropdown icon' }),
+          { className: 'ui fixed top sticky fluid inverted menu', style: { height: this.props.toolBarHeight + 'px' } },
           React.createElement(
             'div',
-            { className: 'menu' },
+            { className: 'ui simple dropdown item' },
+            'Views ',
+            React.createElement('i', { className: 'dropdown icon' }),
             React.createElement(
-              'a',
-              { className: 'item', href: '#' },
-              'Actions'
-            ),
-            React.createElement(
-              'a',
-              { className: 'item', href: '#' },
-              'Resources'
+              'div',
+              { className: 'menu' },
+              React.createElement(
+                'a',
+                { className: 'item', href: '#' },
+                'Actions'
+              ),
+              React.createElement(
+                'a',
+                { className: 'item', href: '#' },
+                'Resources'
+              )
             )
           )
-        )
-      ),
-      React.createElement('div', { className: 'ui container', style: { height: '50px' } })
-    );
-  }
-});
+        ),
+        React.createElement('div', { className: 'ui container', style: { height: this.props.toolBarHeight + 'px' } })
+      );
+    }
+  }]);
+  return AppMenuComponent;
+}(React.Component);
 
-var AppMenuContainer = React.createClass({
-  displayName: 'AppMenuContainer',
-  render: function render() {
-    return React.createElement(
-      AltContainer,
-      {
-        store: AppMenuStore$1,
-        actions: AppMenuActions$1
-      },
-      React.createElement(AppMenu, null)
-    );
+var AppMenuContainer = function (_React$Component) {
+  inherits(AppMenuContainer, _React$Component);
+
+  function AppMenuContainer(props) {
+    classCallCheck(this, AppMenuContainer);
+
+    var _this = possibleConstructorReturn(this, (AppMenuContainer.__proto__ || Object.getPrototypeOf(AppMenuContainer)).call(this, props));
+
+    _this.AppMenuStore = AppMenuStore$1;
+    AppMenuStore$1.state.toolBarHeight = _this.props.toolBarHeight;
+    return _this;
   }
-});
+
+  createClass(AppMenuContainer, [{
+    key: 'render',
+    value: function render() {
+
+      return React.createElement(
+        AltContainer,
+        {
+          store: this.AppMenuStore,
+          actions: AppMenuActions$1
+        },
+        React.createElement(AppMenuComponent, null)
+      );
+    }
+  }]);
+  return AppMenuContainer;
+}(React.Component);
+
+var AppFooterActions = function AppFooterActions() {
+  classCallCheck(this, AppFooterActions);
+
+  this.generateActions();
+};
+
+var AppFooterActions$1 = alt.createActions(AppFooterActions);
+
+var AppFooterStore = function AppFooterStore() {
+  classCallCheck(this, AppFooterStore);
+
+  this.errorMessage = null;
+  this.bindActions(AppFooterActions$1);
+
+  this.footerHeight = 0;
+};
+
+var AppFooterStore$1 = alt.createStore(AppFooterStore, 'AppFooterStore');
+
+var AppFooterComponent = function (_React$Component) {
+  inherits(AppFooterComponent, _React$Component);
+
+  function AppFooterComponent(props) {
+    classCallCheck(this, AppFooterComponent);
+    return possibleConstructorReturn(this, (AppFooterComponent.__proto__ || Object.getPrototypeOf(AppFooterComponent)).call(this, props));
+  }
+
+  createClass(AppFooterComponent, [{
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        'div',
+        null,
+        React.createElement('div', { className: 'ui fixed bottom sticky fluid inverted menu', style: { height: this.props.footerHeight + 'px' } }),
+        React.createElement('div', { className: 'ui container', style: { height: this.props.footerHeight + 'px' } })
+      );
+    }
+  }]);
+  return AppFooterComponent;
+}(React.Component);
+
+var AppFooterContainer = function (_React$Component) {
+  inherits(AppFooterContainer, _React$Component);
+
+  function AppFooterContainer(props) {
+    classCallCheck(this, AppFooterContainer);
+
+    var _this = possibleConstructorReturn(this, (AppFooterContainer.__proto__ || Object.getPrototypeOf(AppFooterContainer)).call(this, props));
+
+    _this.AppFooterStore = AppFooterStore$1;
+    AppFooterStore$1.state.footerHeight = _this.props.footerHeight;
+    return _this;
+  }
+
+  createClass(AppFooterContainer, [{
+    key: 'render',
+    value: function render() {
+
+      return React.createElement(
+        AltContainer,
+        {
+          store: this.AppFooterStore,
+          actions: AppFooterActions$1
+        },
+        React.createElement(AppFooterComponent, null)
+      );
+    }
+  }]);
+  return AppFooterContainer;
+}(React.Component);
 
 var TableActions = function TableActions() {
   classCallCheck(this, TableActions);
 
-  this.generateActions('updateCell', 'editCell', 'selectCell');
+  this.generateActions('updateCell', 'editCell', 'selectCell', 'updateViewHeight');
 };
 
 var TableActions$1 = alt.createActions(TableActions);
+
+var win = require('electron').remote;
 
 var TableStore = function () {
   function TableStore() {
     classCallCheck(this, TableStore);
 
     this.errorMessage = null;
+    this.height = win.getCurrentWindow().getContentSize()[1] - 150;
 
     var default_cell = {
       column: '',
@@ -206,6 +308,11 @@ var TableStore = function () {
         }
       }
       this.tableData.rows[indexes.rowIndex].cells[indexes.cellIndex].isSelected = true;
+    }
+  }, {
+    key: 'onUpdateViewHeight',
+    value: function onUpdateViewHeight(size) {
+      this.height = size - 150;
     }
   }]);
   return TableStore;
@@ -296,75 +403,143 @@ var Row = React.createClass({
   }
 });
 
-var Table = React.createClass({
-  displayName: 'Table',
-  render: function render() {
-    var Rows = this.props.tableData.rows.map(function (object, i) {
-      return React.createElement(Row, {
-        rowData: object,
-        selectCell: this.props.selectCell,
-        editCell: this.props.editCell,
-        updateCell: this.props.updateCell,
-        key: i });
-    }, this);
+var win$1 = require('electron').remote;
 
-    var Headers = this.props.tableData.fields.map(function (object, i) {
-      return React.createElement(
-        'th',
-        { key: i },
-        object.name
-      );
+var Table = function (_React$Component) {
+  inherits(Table, _React$Component);
+
+  function Table(props) {
+    classCallCheck(this, Table);
+
+    var _this = possibleConstructorReturn(this, (Table.__proto__ || Object.getPrototypeOf(Table)).call(this, props));
+
+    var prev_height = win$1.getCurrentWindow().getContentSize()[1];
+
+    win$1.getCurrentWindow().prependListener('resize', function (e) {
+      var height = win$1.getCurrentWindow().getContentSize()[1];
+      if (prev_height != height) {
+        prev_height = height;
+        _this.props.updateViewHeight(height);
+      }
     });
+    return _this;
+  }
 
-    return React.createElement(
-      'div',
-      { style: { height: '500px' } },
-      React.createElement(
+  createClass(Table, [{
+    key: 'render',
+    value: function render() {
+      var Rows = this.props.tableData.rows.map(function (object, i) {
+        return React.createElement(Row, {
+          rowData: object,
+          selectCell: this.props.selectCell,
+          editCell: this.props.editCell,
+          updateCell: this.props.updateCell,
+          key: i });
+      }, this);
+
+      var Headers = this.props.tableData.fields.map(function (object, i) {
+        return React.createElement(
+          'th',
+          { key: i },
+          object.name
+        );
+      });
+
+      return React.createElement(
         'div',
-        { style: { overflow: 'scroll' } },
+        { className: 'ui fluid container' },
         React.createElement(
-          'table',
-          { className: 'ui striped fixed selectable celled table' },
+          'div',
+          { className: 'ui fluid container', style: { top: 'inherit' } },
           React.createElement(
-            'thead',
-            null,
+            'table',
+            { className: 'ui striped fixed selectable celled table' },
             React.createElement(
-              'tr',
+              'thead',
               null,
-              Headers
+              React.createElement(
+                'tr',
+                { style: { height: '50px' } },
+                Headers
+              )
             )
-          ),
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'ui fluid container', style: { height: this.props.height + 'px', overflowY: 'overlay', margin: '0px', padding: '0px' } },
           React.createElement(
-            'tbody',
-            null,
-            Rows
+            'table',
+            { className: 'ui striped fixed selectable celled table' },
+            React.createElement(
+              'tbody',
+              null,
+              Rows
+            )
           )
         )
-      )
-    );
-  }
-});
+      );
+    }
+  }]);
+  return Table;
+}(React.Component);
 
-var TableContainer = React.createClass({
-  displayName: 'TableContainer',
-  render: function render() {
-    return React.createElement(
-      AltContainer,
-      {
-        store: TableStore$1,
-        actions: TableActions$1
-      },
-      React.createElement(Table, null)
-    );
+var TableContainer = function (_React$Component) {
+  inherits(TableContainer, _React$Component);
+
+  function TableContainer(props) {
+    classCallCheck(this, TableContainer);
+    return possibleConstructorReturn(this, (TableContainer.__proto__ || Object.getPrototypeOf(TableContainer)).call(this, props));
   }
-});
+
+  createClass(TableContainer, [{
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        AltContainer,
+        {
+          store: TableStore$1,
+          actions: TableActions$1
+        },
+        React.createElement(Table, null)
+      );
+    }
+  }]);
+  return TableContainer;
+}(React.Component);
+
+var AppViewContainer = function (_React$Component) {
+  inherits(AppViewContainer, _React$Component);
+
+  function AppViewContainer(props) {
+    classCallCheck(this, AppViewContainer);
+    return possibleConstructorReturn(this, (AppViewContainer.__proto__ || Object.getPrototypeOf(AppViewContainer)).call(this, props));
+  }
+
+  createClass(AppViewContainer, [{
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        AltContainer,
+        null,
+        React.createElement(TableContainer, { height: this.props.height })
+      );
+    }
+  }]);
+  return AppViewContainer;
+}(React.Component);
 
 var App = function (_React$Component) {
   inherits(App, _React$Component);
 
-  function App() {
+  function App(props) {
     classCallCheck(this, App);
-    return possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+
+    var _this = possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+    _this.toolBarHeight = 50;
+    _this.footerHeight = 50;
+    return _this;
   }
 
   createClass(App, [{
@@ -373,8 +548,9 @@ var App = function (_React$Component) {
       return React.createElement(
         'div',
         null,
-        React.createElement(AppMenuContainer, null),
-        React.createElement(TableContainer, null)
+        React.createElement(AppMenuContainer, { toolBarHeight: this.toolBarHeight }),
+        React.createElement(AppViewContainer, { height: this.viewHeight }),
+        React.createElement(AppFooterContainer, { footerHeight: this.footerHeight })
       );
     }
   }]);

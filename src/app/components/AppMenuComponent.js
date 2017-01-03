@@ -1,10 +1,14 @@
 import React from 'react';
 
-var AppMenu = React.createClass({
+class AppMenuComponent extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div>
-        <div className="ui fixed top sticky fluid inverted menu" style={{height: '50px'}}>
+        <div className="ui fixed top sticky fluid inverted menu" style={{height: this.props.toolBarHeight + 'px'}}>
           <div className="ui simple dropdown item">
             Views <i className="dropdown icon"></i>
             <div className="menu">
@@ -13,10 +17,10 @@ var AppMenu = React.createClass({
             </div>
           </div>
         </div>
-        <div className="ui container" style={{height: '50px'}}/>
+        <div className="ui container" style={{height: this.props.toolBarHeight + 'px'}}/>
       </div>
     );
   }
-});
+}
 
-export default AppMenu;
+export default AppMenuComponent;
