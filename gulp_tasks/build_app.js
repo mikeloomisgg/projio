@@ -34,8 +34,8 @@ gulp.task('bundle', function () {
     })
   ];
   return Promise.all([
-      bundle(srcDir.path('background.js'), destDir.path('background.js'), {rollupPlugins: plugins}),
-      bundle(srcDir.path('app.js'), destDir.path('app.js'), {rollupPlugins: plugins}),
+      bundle(srcDir.path('app/background.js'), destDir.path('background.js'), {rollupPlugins: plugins}),
+      bundle(srcDir.path('app/app.js'), destDir.path('app.js'), {rollupPlugins: plugins}),
   ]);
 });
 

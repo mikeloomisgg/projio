@@ -1,9 +1,9 @@
 import React from 'react';
 import AltContainer from 'alt-container';
 
-import TableContainer from './TableContainer';
+import Table from '../event_table/Table';
 
-class AppViewContainer extends React.Component {
+class ViewContainer extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -11,10 +11,10 @@ class AppViewContainer extends React.Component {
   render() {
     return (
       <AltContainer>
-        <TableContainer height={this.props.height}/>
+        <Table height={this.props.height}/>
       </AltContainer>
     )
   }
 }
 
-export default AppViewContainer
+export default ViewContainer

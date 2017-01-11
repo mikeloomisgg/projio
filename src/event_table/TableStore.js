@@ -1,5 +1,5 @@
-import alt from '../alt';
-import TableActions from '../actions/TableActions';
+import alt from '../app/alt';
+import TableActions from './TableActions';
 
 var win = require('electron').remote;
 

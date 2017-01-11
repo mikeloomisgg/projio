@@ -1,6 +1,10 @@
 import React from 'react';
+import AltContainer from 'alt-container';
 
-class AppMenuComponent extends React.Component {
+import ToolbarStore from './ToolbarStore';
+import ToolbarActions from './ToolbarActions';
+
+class Toolbar extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -23,4 +27,27 @@ class AppMenuComponent extends React.Component {
   }
 }
 
-export default AppMenuComponent;
+class ToolbarContainer extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.ToolbarStore = ToolbarStore;
+    ToolbarStore.state.toolBarHeight = this.props.toolBarHeight;
+  }
+
+  render() {
+
+    return (
+      <AltContainer
+        store={this.ToolbarStore}
+        actions={ToolbarActions}
+      >
+        <Toolbar />
+      </AltContainer>
+
+    )
+  }
+}
+
+export {Toolbar}
+export default ToolbarContainer;
