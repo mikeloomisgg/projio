@@ -1,10 +1,10 @@
 # -*- mode: python -*-
+import os
 from kivy.deps import sdl2, glew
 block_cipher = None
 
-
 a = Analysis(['src\\Projio.py'],
-             pathex=['C:\\Users\\Mike Loomis\\PycharmProjects\\projio'],
+             pathex=[os.getcwd()],
              binaries=[],
              datas=[],
              hiddenimports=[],
