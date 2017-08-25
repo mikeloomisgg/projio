@@ -1,0 +1,7 @@
+docutils
+pygments
+kivy.deps.sdl2
+kivy.deps.glew
+kivy
+pytest
+pyinstaller
