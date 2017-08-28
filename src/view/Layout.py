@@ -12,6 +12,8 @@ Config.set('graphics', 'resizable', 0)
 class Layout(GridLayout):
     def __init__(self, **kwargs):
         super(Layout, self).__init__(**kwargs)
+        self.size_hint = 1, 1
+        self.cols = 1
         with self.canvas.before:
             self._bg_color = Color(0, 0, 0, mode="rgba")
             self._bg_rect = Rectangle(pos=self.pos, size=self.size)
